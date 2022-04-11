@@ -6,8 +6,8 @@
 
 - [x] 渲染dom元素
 - [x] 创建element & JSX
-- [ ] 虚拟dom & diff
-- [ ] components & state
+- [x] 虚拟dom & diff
+- [x] components & state
 - [ ] Fiber
 
 ## 启动项目🚀

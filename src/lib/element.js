@@ -1,30 +1,4 @@
-/**
-const element = (
-  <div id="container">
-    <input value="foo" type="text" />
-    <a href="/bar">bar</a>
-    <span onClick={e => alert("Hi")}>click me</span>
-  </div>
-);
-
-const element = createElement(
-  "div",
-  { id: "container" },
-  createElement("input", { value: "foo", type: "text" }),
-  createElement(
-    "a",
-    { href: "/bar" },
-    "bar"
-  ),
-  createElement(
-    "span",
-    { onClick: e => alert("Hi") },
-    "click me"
-  )
-);
- */
-
-const TEXT_ELEMENT = "TEXT ELEMENT";
+export const TEXT_ELEMENT = "TEXT ELEMENT";
 
 /**
  * 支持jsx的creacteElement函数
