@@ -1,4 +1,5 @@
-import { scheduleUpdate } from "./fiber.js"; // import { reconcile } from "./render.js";
+import { scheduleUpdate } from "./fiber.js";
+// import { reconcile } from "./render.js";
 
 export class Component {
   constructor(props) {
@@ -8,11 +9,13 @@ export class Component {
 
   setState(partialState) {
     // 加入调度器
-    scheduleUpdate(this, partialState); // this.state = Object.assign({}, this.state, partialState);
+    scheduleUpdate(this, partialState);
+
+    // this.state = Object.assign({}, this.state, partialState);
     // updateInstance(this.__internalInstance);
   }
-
 }
+
 export function createInstance(fiber) {
   const instance = new fiber.type(fiber.props);
   instance.__fiber = fiber;
@@ -24,17 +27,15 @@ export function createInstance(fiber) {
  * @param {*} interalInstance 部分实例
  * @returns
  */
-
 export function createPublicInstance(element, interalInstance) {
-  const {
-    type,
-    props
-  } = element; // eg: publicInstance = new Component(props)
-
+  const { type, props } = element;
+  // eg: publicInstance = new Component(props)
   const publicInstance = new type(props);
   publicInstance.__internalInstance = interalInstance;
   return publicInstance;
-} // /**
+}
+
+// /**
 //  * 更新实例
 //  * @param {*} interalInstance
 //  */

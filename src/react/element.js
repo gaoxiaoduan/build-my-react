@@ -14,7 +14,7 @@ export function createElement(type, config, ...args) {
 
   props.children = rawChildren
     // 过滤null和false
-    .filter((c) => c !== null && c !== false)
+    .filter((c) => c != null && c !== false)
     .map((c) => (c instanceof Object ? c : createTextElement(c)));
 
   return { type, props };

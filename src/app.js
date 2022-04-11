@@ -1,5 +1,5 @@
 /** @jsx react.createElement */
-import react from "./lib/index.js";
+import react from "./react/index.js";
 
 const randomLikes = () => Math.ceil(Math.random() * 100);
 
@@ -68,52 +68,78 @@ const stories = [
 // 1.每次点击只会影响需要变化的元素
 // 2.增加组件后，在每次调用setState时，会自动render
 // 3.封装组件状态
-class App extends react.Component {
+// class App extends react.Component {
+//   render() {
+//     return (
+//       <div>
+//         <h1>hello my react</h1>
+//         <ul>
+//           {this.props.stories.map((story) => {
+//             return <Story name={story.name} url={story.url} />;
+//           })}
+//         </ul>
+//       </div>
+//     );
+//   }
+// }
+
+// class Story extends react.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       likes: Math.ceil(Math.random() * 100),
+//     };
+//   }
+
+//   like() {
+//     this.setState({
+//       likes: this.state.likes + 1,
+//     });
+//   }
+
+//   render() {
+//     const { name } = this.props;
+//     const { likes } = this.state;
+//     return (
+//       <li>
+//         <button onClick={(e) => this.like()}>
+//           {likes}
+//           <b>❤️</b>
+//         </button>
+//         <a
+//         // href={url}
+//         >
+//           {name}
+//         </a>
+//       </li>
+//     );
+//   }
+// }
+// react.render(<App stories={stories} />, document.getElementById("root"));
+
+// --------------------fiber-----------------------
+class HelloMessage extends react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+  }
+  handleClick = () => {
+    this.setState({
+      count: this.state.count + 1,
+    });
+  };
   render() {
     return (
       <div>
-        <h1>hello my react</h1>
-        <ul>
-          {this.props.stories.map((story) => {
-            return <Story name={story.name} url={story.url} />;
-          })}
-        </ul>
+        Hello {this.props.name}
+        count:{this.state.count}
+        <br />
+        <button onClick={this.handleClick}>+1</button>
       </div>
     );
   }
 }
-
-class Story extends react.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      likes: Math.ceil(Math.random() * 100),
-    };
-  }
-
-  like() {
-    this.setState({
-      likes: this.state.likes + 1,
-    });
-  }
-
-  render() {
-    const { name } = this.props;
-    const { likes } = this.state;
-    return (
-      <li>
-        <button onClick={(e) => this.like()}>
-          {likes}
-          <b>❤️</b>
-        </button>
-        <a
-        // href={url}
-        >
-          {name}
-        </a>
-      </li>
-    );
-  }
-}
-
-react.render(<App stories={stories} />, document.getElementById("root"));
+// debugger
+react.render(<HelloMessage name="xiaoming" />, document.getElementById("root"));
