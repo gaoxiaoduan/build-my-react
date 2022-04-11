@@ -1,3 +1,4 @@
+import { TEXT_ELEMENT } from "./element.js";
 /**
  * 更新dom上的属性和事件
  * @param {*} dom
@@ -31,4 +32,19 @@ export function updateDomProperties(dom, prevProps, nextProps) {
   Object.keys(nextProps)
     .filter(isAttribute)
     .forEach((name) => (dom[name] = nextProps[name]));
+}
+
+/**
+ * 创建dom元素
+ * @param {*} fiber
+ * @returns dom
+ */
+export function createDomElement(fiber) {
+  const isTextElement = fiber.type === TEXT_ELEMENT;
+  const dom = isTextElement
+    ? document.createTextNode("")
+    : document.createElement(fiber.type);
+
+  updateDomProperties(dom, [], fiber.props);
+  return dom;
 }
